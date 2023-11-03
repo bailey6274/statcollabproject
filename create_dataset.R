@@ -9,15 +9,14 @@ library(readr)
 library(dplyr)
 library(tidyr)
 library(stringr)
-library(fields)
 library(psych)
 library(pROC)
 library(klaR)
 
 
-minnesota_stats <- read_csv('/Users/baileyh6274/Library/Mobile Documents/com~apple~CloudDocs/STAT 4680/Project_Code/player-stats-minnesota.csv')
-player_info <- read_csv('/Users/baileyh6274/Library/Mobile Documents/com~apple~CloudDocs/STAT 4680/Project_Code/player-info-minnesota.csv')
-minnesota_roster <- read_csv('/Users/baileyh6274/Library/Mobile Documents/com~apple~CloudDocs/STAT 4680/Project_Code/total_roster_min.csv')
+minnesota_stats <- read_csv('player-stats-minnesota.csv')
+player_info <- read_csv('player-info-minnesota.csv')
+minnesota_roster <- read_csv('total_roster_min.csv')
 minnesota_roster <- minnesota_roster[,2:ncol(minnesota_roster)]
 minnesota_stats <- minnesota_stats[,2:ncol(minnesota_stats)]
 

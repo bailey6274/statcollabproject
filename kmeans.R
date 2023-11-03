@@ -1,39 +1,22 @@
-library(tidyverse)
-library(mosaic)
-library(knitr)
-library(ggplot2)
-library(arm)
-library(broom)
-library(boot)
-library(readr)
-library(dplyr)
-library(tidyr)
-library(stringr)
-library(fields)
-library(psych)
-library(pROC)
-library(klaR)
-library(gghighlight)
-
-source('create_dataset.R')
+min <- read_csv("minnesota_data.csv")
 
 min <- minnesota %>%
   dplyr::select(HEIGHT,WEIGHT,FG_PCT,FG3_PCT,FT_PCT,REB,AST,TOV,PTS,STL,AGE,BLK) %>%
-  drop_na()
-
-normalize <- function(col){
-  col <- (col - mean(col))/sd(col)
-  col
-}
-sapply(min, var)
-min <- sapply(min, normalize)
-sapply(min, var)
-min <- as.data.frame(min)
-
-min_scale <- min %>%
-  dplyr::select(HEIGHT,WEIGHT,FG_PCT,FG3_PCT,FT_PCT,REB,AST,TOV,PTS,STL,AGE,BLK) %>%
   drop_na() %>%
-  scale()
+  mutate(HEIGHT = (HEIGHT - mean(HEIGHT))/sd(HEIGHT),
+         WEIGHT = (WEIGHT - mean(WEIGHT))/sd(WEIGHT),
+         FG_PCT = (FG_PCT - mean(FG_PCT))/sd(FG_PCT),
+         FG3_PCT = (FG3_PCT - mean(FG3_PCT))/sd(FG3_PCT),
+         FT_PCT = (FT_PCT - mean(FT_PCT))/sd(FT_PCT),
+         REB = (REB - mean(REB))/sd(REB),
+         AST = (AST - mean(AST))/sd(AST),
+         TOV = (TOV - mean(TOV))/sd(TOV),
+         PTS = (PTS - mean(PTS))/sd(PTS),
+         STL = (STL - mean(STL))/sd(STL),
+         AGE = (AGE - mean(AGE))/sd(AGE),
+         BLK = (BLK - mean(BLK))/sd(BLK))
+
+
 
 
 
@@ -45,7 +28,7 @@ MAX_K <- 20 # max number of clusters
 sse <- c() # vector to hold SSE of each model
 
 for (k in 1:MAX_K) {
-  algo_k <- kmeans(min_scale, centers=k, nstart=22, iter.max=20) # k-means algorithm
+  algo_k <- kmeans(min, centers=k, nstart=22, iter.max=20) # k-means algorithm
   sse <- c(sse, algo_k$tot.withinss) # get SSE
 } 
 
@@ -91,7 +74,7 @@ ggplot(data = k.diff2, aes(x=k, y=SSE_difference)) +
 
 K <- 9
 
-k.m <- kmeans(min_scale, centers=K, nstart=22, iter.max=20)
+k.m <- kmeans(min, centers=K, nstart=22, iter.max=20)
 km_centers <- as.data.frame(k.m$centers) # SCALED cluster centers/means
 
 # name clusters before pivoting
@@ -114,7 +97,7 @@ km_centers %>%
   ggplot(aes(x=feature, y=z_val, color=Cluster)) + 
   geom_point() + # plot points
   scale_color_brewer(palette="Paired") + # color points
-  gghighlight(use_direct_label = FALSE) + # highlight each cluster
+  gghighlight::gghighlight(use_direct_label = FALSE) + # highlight each cluster
   facet_wrap(~ Cluster, ncol=3) + # create seperate plots for each cluster
   labs(x = "Predictor", y = "Cluster Center", 
        title = "Visualizing K-Means Cluster Makeups") + 
@@ -125,7 +108,7 @@ km_centers %>%
 
 
 
-pca <- prcomp(min_scale) # perform Principle Component Analysis 
+pca <- prcomp(min) # perform Principle Component Analysis 
 pca_summary <- summary(pca) # summary of PCA model
 
 # plot % of variance between players explained by each subsequent PC 
@@ -142,7 +125,6 @@ pc2 <- as.data.frame(pca$x[,1:2]) # extract first two PCs
 pc2$Cluster <- as.factor(k.m$cluster) # add player clusters 
 cluster1_var <- round(pca_summary$importance[2,1], 4) * 100 # get variance explained by cluster 1
 cluster2_var <- round(pca_summary$importance[2,2], 4) * 100 # get variance explained by cluster 2
-
 
 pc2 %>% 
   ggplot(aes(x=PC1, y=PC2, color=Cluster, shape=Cluster)) + 
