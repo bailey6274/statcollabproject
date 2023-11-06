@@ -108,7 +108,7 @@ km_centers %>%
 
 
 
-pca <- prcomp(min) # perform Principle Component Analysis 
+pca <- prcomp(min, scale = TRUE) # perform Principle Component Analysis 
 pca_summary <- summary(pca) # summary of PCA model
 
 # plot % of variance between players explained by each subsequent PC 
@@ -126,6 +126,9 @@ pc2$Cluster <- as.factor(k.m$cluster) # add player clusters
 cluster1_var <- round(pca_summary$importance[2,1], 4) * 100 # get variance explained by cluster 1
 cluster2_var <- round(pca_summary$importance[2,2], 4) * 100 # get variance explained by cluster 2
 
+
+
+
 pc2 %>% 
   ggplot(aes(x=PC1, y=PC2, color=Cluster, shape=Cluster)) + 
   geom_point(alpha=0.3) + 
@@ -135,5 +138,108 @@ pc2 %>%
   scale_shape_manual(values=seq(0,15)) + 
   labs(x = paste0('PC1 (Accounts for ', cluster1_var, '% of Variance)'), # define cluster 1 % of variance
        y = paste0('PC2 (Accounts for ', cluster2_var, '% of Variance)'), # define cluster 2 % of variance
-       title = 'K-Means Cluster Differences Across First Two Principle Components')
+       title = 'K-Means Cluster Differences Across First Two Principle Components') +
+  ggpubr::stat_mean(aes(color = Cluster), size = 4, shape = 16)
 
+
+
+eigenvalue <- round(factoextra::get_eigenvalue(pca), 4)
+
+k.m$betweenss/k.m$totss
+k <- 9
+f_stat <- (k.m$betweenss/(k-1))/(k.m$tot.withinss/(nrow(min) - k))
+f_stat
+
+k.m8 <- kmeans(min, centers=8, nstart=22, iter.max=20)
+
+f_stat8 <- (k.m8$betweenss/(8-1))/(k.m8$tot.withinss/(nrow(min) - 8))
+f_stat8
+# Determine number of clusters
+wss <- (nrow(mydata)-1)*sum(apply(mydata,2,var))
+
+wss <- (nrow(min)-1)*sum(apply(min,2,var))
+wss[1] <- 
+for (i in 1:20) wss[i] <- kmeans(min,centers=i)$betweenss/kmeans(min,centers=i)$totss
+
+ggplot(data = data.frame(x = c(1:20), y = wss), aes(x, y)) + 
+  geom_point(color="#F84C1E") + 
+  geom_line(color="#232D4B") + # set color of point and lines
+  labs(x = "K", y = "WSS", title = "A Clearer Picture") + # set axis/plot titles
+  scale_x_continuous(breaks=seq(1, 20, 1)) + # define x-axis
+  theme_minimal()  + # add themes
+  theme(panel.grid.minor.x = element_blank(), panel.grid.minor.y = element_blank())
+
+for (k in 1:MAX_K) {
+  algo_k <- kmeans(min, centers=k, nstart=100, iter.max=20) # k-means algorithm
+  sse <- c(sse, algo_k$tot.withinss) # get SSE
+} 
+
+ggplot(data.frame(k = c(1:MAX_K), WSS = sse), aes(x=k, y=WSS)) + 
+  geom_point(color="#56B4E9") + 
+  geom_line(color="#999999") + # set color of point and lines
+  labs(x = "K", y = "WSS", title = "WSS Across K-Clusters") + # set axis/plot titles
+  scale_x_continuous(breaks=seq(1, MAX_K, 1)) + # define x-axis
+  theme_minimal() + # add themes
+  theme(panel.grid.minor.x = element_blank(), panel.grid.minor.y = element_blank()) + 
+  scale_colour_manual(values=cbPalette)# manually alter theme
+
+sse <- c() # vector to hold SSE of each model
+
+for (k in 1:MAX_K) {
+  algo_k <- kmeans(min, centers=k, nstart=100, iter.max=20) # k-means algorithm
+  sse <- c(sse, algo_k$tot.withinss) # get SSE
+} 
+
+k.diff2 <- data.frame(k = 1:MAX_K, SSE_difference = sse-2*lead(sse)+lead(sse, 2)) %>%
+  dplyr::filter(k<MAX_K-1)
+
+ggplot(data = k.diff2, aes(x=k, y=SSE_difference)) + 
+  geom_point(color="#56B4E9") + 
+  geom_line(color="#999999") + 
+  geom_point(aes(x = 7, y = SSE_difference[7]), shape = 1, size = 5, alpha = .7, color = "#E69F00") +
+  labs(x = "K", y = "SSE", title = "Two-Unit Rolling Distance of SSE Across K-Clusters") + 
+  scale_x_continuous(breaks=seq(1, MAX_K, 1)) + 
+  theme_minimal() +  
+  theme(panel.grid.minor.x = element_blank(), panel.grid.minor.y = element_blank())
+
+
+ggplot(data = k.diff2, aes(x=k, y=SSE_difference)) + 
+  geom_point(color="#56B4E9") + 
+  geom_line(color="#999999") + 
+  geom_point(aes(x = 7, y = SSE_difference[7]), shape = 1, size = 5, alpha = .7, color = "#E69F00") +
+  labs(x = "K", y = "SSE", title = "Two-Unit Rolling Distance of SSE Across K-Clusters") + 
+  scale_x_continuous(breaks=seq(1, MAX_K, 1)) + 
+  theme_minimal() +  
+  theme(panel.grid.minor.x = element_blank(), panel.grid.minor.y = element_blank())
+
+ratio <- c() # vector to hold SSE of each model
+
+for (k in 1:MAX_K) {
+  algo_k <- kmeans(min, centers=k, nstart=100, iter.max=20) # k-means algorithm
+  ratio <- c(ratio, algo_k$betweenss/algo_k$totss) # get SSE
+} 
+
+ratio.diff <- data.frame(k = 1:MAX_K, RATIO = ratio-lead(ratio)) %>%
+  dplyr::filter(k<MAX_K-1)
+
+
+ggplot(data = ratio.diff, aes(x=k, y=RATIO)) + 
+  geom_point(color="#56B4E9") + 
+  geom_line(color="#999999") + 
+  geom_point(aes(x = 7, y = RATIO[7]), shape = 1, size = 5, alpha = .7, color = "#E69F00") +
+  labs(x = "K", y = "SSE", title = "Two-Unit Rolling Distance of SSE Across K-Clusters") + 
+  scale_x_continuous(breaks=seq(1, MAX_K, 1)) + 
+  theme_minimal() +  
+  theme(panel.grid.minor.x = element_blank(), panel.grid.minor.y = element_blank())
+
+ratio.diff2 <- data.frame(k = 1:MAX_K, RATIO = ratio-2*lead(ratio)+lead(ratio, 2)) %>%
+  dplyr::filter(k<MAX_K-1)
+
+ggplot(data = ratio.diff2, aes(x=k, y=RATIO)) + 
+  geom_point(color="#56B4E9") + 
+  geom_line(color="#999999") + 
+  geom_point(aes(x = 7, y = RATIO[7]), shape = 1, size = 5, alpha = .7, color = "#E69F00") +
+  labs(x = "K", y = "Ratio Difference", title = "Two-Unit Rolling Distance of BSS/TSS Ratio") + 
+  scale_x_continuous(breaks=seq(1, MAX_K, 1)) + 
+  theme_minimal() +  
+  theme(panel.grid.minor.x = element_blank(), panel.grid.minor.y = element_blank())
