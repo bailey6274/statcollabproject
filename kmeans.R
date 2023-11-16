@@ -27,10 +27,17 @@ set.seed(2002) # set seed to ensure reproduceability b/c k-means relies on rando
 MAX_K <- 20 # max number of clusters
 sse <- c() # vector to hold SSE of each model
 
+# k means for 1-20 clusters
 for (k in 1:MAX_K) {
-  algo_k <- kmeans(min, centers=k, nstart=22, iter.max=20) # k-means algorithm
+  algo_k <- kmeans(min, centers=k, nstart=100, iter.max=20) # k-means algorithm
   sse <- c(sse, algo_k$tot.withinss) # get SSE
 } 
+
+k.diff1 <- data.frame(k = 1:MAX_K, SSE_difference = sse-lead(sse)) %>%
+  dplyr::filter(k<MAX_K-1)
+
+k.diff2 <- data.frame(k = 1:MAX_K, SSE_difference = sse-2*lead(sse)+lead(sse, 2)) %>%
+  dplyr::filter(k<MAX_K-1)
 
 # color blind palette
 cbPalette <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
@@ -57,10 +64,6 @@ tibble(k = 1:MAX_K, SSE_difference = sse-lead(sse)) %>%
   theme_minimal()  + # add themes
   theme(panel.grid.minor.x = element_blank(), panel.grid.minor.y = element_blank()) # manually alter theme
 
-k.diff1 <- data.frame(k = 1:MAX_K, SSE_difference = sse-lead(sse)) %>%
-  dplyr::filter(k<MAX_K-1)
-k.diff2 <- data.frame(k = 1:MAX_K, SSE_difference = sse-2*lead(sse)+lead(sse, 2)) %>%
-  dplyr::filter(k<MAX_K-1)
 
 ggplot(data = k.diff2, aes(x=k, y=SSE_difference)) + 
   geom_point(color="#56B4E9") + 
@@ -72,15 +75,15 @@ ggplot(data = k.diff2, aes(x=k, y=SSE_difference)) +
   theme(panel.grid.minor.x = element_blank(), panel.grid.minor.y = element_blank())
 
 
-K <- 9
+K <- 7
 
-k.m <- kmeans(min, centers=K, nstart=22, iter.max=20)
+k.m <- kmeans(min, centers=K, nstart=100, iter.max=20)
 km_centers <- as.data.frame(k.m$centers) # SCALED cluster centers/means
 
 # name clusters before pivoting
 km_centers$Cluster <- c('Cluster 1', 'Cluster 2', 'Cluster 3',
                         'Cluster 4', 'Cluster 5', 'Cluster 6',
-                        'Cluster 7', 'Cluster 8', 'Cluster 9') 
+                        'Cluster 7') 
 # massage data
 km_centers <- km_centers %>%
   pivot_longer(!Cluster, names_to = 'feature', values_to = 'z_val') # pivot data to make plotting easier
@@ -90,7 +93,7 @@ km_centers$feature <- factor(km_centers$feature, levels=c("HEIGHT","WEIGHT","FG_
 
 # reset the order of clusters for plotting (cluster 10 would default to come after cluster 1 and before cluster 2)
 km_centers$Cluster <- factor(km_centers$Cluster, levels=c('Cluster 1', 'Cluster 2', 'Cluster 3', 'Cluster 4',
-                                                          'Cluster 5', 'Cluster 6', 'Cluster 7', 'Cluster 8', 'Cluster 9'))
+                                                          'Cluster 5', 'Cluster 6', 'Cluster 7'))
 
 
 km_centers %>% 
@@ -108,7 +111,7 @@ km_centers %>%
 
 
 
-pca <- prcomp(min, scale = TRUE) # perform Principle Component Analysis 
+pca <- prcomp(min, scale = FALSE) # perform Principle Component Analysis 
 pca_summary <- summary(pca) # summary of PCA model
 
 # plot % of variance between players explained by each subsequent PC 
@@ -183,21 +186,22 @@ ggplot(data.frame(k = c(1:MAX_K), WSS = sse), aes(x=k, y=WSS)) +
   theme(panel.grid.minor.x = element_blank(), panel.grid.minor.y = element_blank()) + 
   scale_colour_manual(values=cbPalette)# manually alter theme
 
-sse <- c() # vector to hold SSE of each model
 
-for (k in 1:MAX_K) {
-  algo_k <- kmeans(min, centers=k, nstart=100, iter.max=20) # k-means algorithm
-  sse <- c(sse, algo_k$tot.withinss) # get SSE
-} 
 
-k.diff2 <- data.frame(k = 1:MAX_K, SSE_difference = sse-2*lead(sse)+lead(sse, 2)) %>%
-  dplyr::filter(k<MAX_K-1)
+ggplot(data.frame(k = c(1:MAX_K), WSS = sse), aes(x=k, y=WSS)) + 
+  geom_point(color="#56B4E9") + 
+  geom_line(color="#999999") + # set color of point and lines
+  labs(x = "K", y = "WSS", title = "WSS Across K-Clusters") + # set axis/plot titles
+  scale_x_continuous(breaks=seq(1, MAX_K, 1)) + # define x-axis
+  theme_minimal() + # add themes
+  theme(panel.grid.minor.x = element_blank(), panel.grid.minor.y = element_blank()) + 
+  scale_colour_manual(values=cbPalette)# manually alter theme
 
 ggplot(data = k.diff2, aes(x=k, y=SSE_difference)) + 
   geom_point(color="#56B4E9") + 
   geom_line(color="#999999") + 
   geom_point(aes(x = 7, y = SSE_difference[7]), shape = 1, size = 5, alpha = .7, color = "#E69F00") +
-  labs(x = "K", y = "SSE", title = "Two-Unit Rolling Distance of SSE Across K-Clusters") + 
+  labs(x = "K", y = "WSS", title = "Two-Unit Rolling Distance of WSS Across K-Clusters") + 
   scale_x_continuous(breaks=seq(1, MAX_K, 1)) + 
   theme_minimal() +  
   theme(panel.grid.minor.x = element_blank(), panel.grid.minor.y = element_blank())
