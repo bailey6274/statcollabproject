@@ -12,6 +12,9 @@ library(stringr)
 library(psych)
 library(pROC)
 library(klaR)
+library(factoextra)
+library(plyr)
+library(ggforce)
 
 ######## GETTING DATA ######## 
 source("create_dataset.R")
@@ -223,18 +226,25 @@ pc2$Cluster <- as.factor(k.m$cluster) # add player clusters
 cluster1_var <- round(pca_summary$importance[2,1], 4) * 100 # get variance explained by cluster 1
 cluster2_var <- round(pca_summary$importance[2,2], 4) * 100 # get variance explained by cluster 2
 
+find_hull <- function(pc2) pc2[chull(pc2$PC2, pc2$PC1), ]
+hulls <- ddply(pc2, "Cluster", find_hull)
 
 # Graph of Clusters across first two PC's
 pc2 %>% 
-  ggplot(aes(x=PC1, y=PC2, color=Cluster, shape=Cluster)) + 
+  ggplot(aes(x=PC1, y=PC2, color=Cluster, shape=Cluster, fill = Cluster)) + 
   geom_point(alpha=0.3) + 
   geom_rug() + # great way to visualize points on a single axis
   theme_minimal() + 
-  stat_ellipse(level=(2/3)) + # set ellipse value to one standard deviation
   scale_shape_manual(values=seq(0,15)) + 
+  geom_mark_ellipse(expand = 0, alpha = .05) + 
   labs(x = paste0('PC1 (Accounts for ', cluster1_var, '% of Variance)'), # define cluster 1 % of variance
        y = paste0('PC2 (Accounts for ', cluster2_var, '% of Variance)'), # define cluster 2 % of variance
        title = 'K-Means Cluster Differences Across First Two Principle Components') +
   ggpubr::stat_mean(aes(color = Cluster), size = 4, shape = 16)
 
-k.m$betweenss/k.m$totss
+
+
+
+
+
+
