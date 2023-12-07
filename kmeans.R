@@ -15,9 +15,11 @@ library(klaR)
 library(factoextra)
 library(plyr)
 library(ggforce)
+library(plyr)
 
 ######## GETTING DATA ######## 
-source("create_dataset.R")
+minnesota <- read_csv('minnesota_stats_newvar.csv')
+minnesota <- minnesota[,c(2:ncol(minnesota))] 
 
 ######## NORMALIZING ######## 
 
@@ -42,6 +44,7 @@ min <- minnesota %>%
 set.seed(2002) # set seed to ensure reproduce ability b/c k-means relies on random states for initialization 
 
 MAX_K <- 20 # max number of clusters
+
 wss <- c() # vector to hold WSS of each model
 ratio <- c() # vector to hold BSS/TSS ratio of each model
 
@@ -70,7 +73,7 @@ wss.k.diff2 <- data.frame(k = 1:MAX_K, WSS_difference = wss-2*lead(wss)+lead(wss
 cbPalette <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
 
 # WSS Plot (No Rolling Distance)
-ggplot(data = wss.k, aes(x=k, y=WSS)) + 
+wss_plot <- ggplot(data = wss.k, aes(x=k, y=WSS)) + 
   geom_point(color=cbPalette[3]) + 
   geom_line(color=cbPalette[1]) + # set color of point and lines
   labs(x = "K", y = "WSS", title = "WSS Across K-Clusters") + # set axis/plot titles
@@ -83,23 +86,23 @@ ggplot(data = wss.k, aes(x=k, y=WSS)) +
 ggplot(data = wss.k.diff1, aes(x=k, y=WSS_difference)) + 
   geom_point(color="#56B4E9") + 
   geom_line(color="#999999") + 
-  geom_point(aes(x = 7, y = WSS_difference[7]), shape = 1, size = 5, alpha = .7, color = "#E69F00") +
+  geom_point(aes(x = 6, y = WSS_difference[6]), shape = 1, size = 5, alpha = .7, color = "#E69F00") +
   labs(x = "K", y = "WSS", title = "One-Unit Rolling Distance of WSS Across K-Clusters") + 
   scale_x_continuous(breaks=seq(1, MAX_K, 1)) + 
   theme_minimal() +  
   theme(panel.grid.minor.x = element_blank(), panel.grid.minor.y = element_blank())
 
 # 2-Unit Rolling Distance WSS Graph
-ggplot(data = wss.k.diff2, aes(x=k, y=WSS_difference)) + 
+wss_2 <- ggplot(data = wss.k.diff2, aes(x=k, y=WSS_difference)) + 
   geom_point(color=cbPalette[3]) + 
   geom_line(color=cbPalette[1]) + 
-  geom_point(aes(x = 7, y = WSS_difference[7]), shape = 1, size = 5, alpha = .7, color = "#E69F00") +
+  geom_point(aes(x = 6, y = WSS_difference[6]), shape = 1, size = 5, alpha = .7, color = "#E69F00") +
   labs(x = "K", y = "WSS", title = "Two-Unit Rolling Distance of WSS Across K-Clusters") + 
   scale_x_continuous(breaks=seq(1, MAX_K, 1)) + 
   theme_minimal() +  
   theme(panel.grid.minor.x = element_blank(), panel.grid.minor.y = element_blank())
 
-
+ggarrange(wss_plot, wss_2)
 ######## VISUALIZING BSS/TSS ACROSS DIFFERENT NUMBER OF CLUSTERS ######## 
 
 # Creating datasets to graph with 
@@ -116,7 +119,7 @@ ratio.k.diff2 <- data.frame(k = 1:MAX_K, RATIO = ratio-2*lead(ratio)+lead(ratio,
 ggplot(data = ratio.k, aes(x=k, y=RATIO)) + 
   geom_point(color="#56B4E9") + 
   geom_line(color="#999999") + 
-  geom_point(aes(x = 7, y = RATIO[7]), shape = 1, size = 5, alpha = .7, color = "#E69F00") +
+  geom_point(aes(x = 8, y = RATIO[8]), shape = 1, size = 5, alpha = .7, color = "#E69F00") +
   labs(x = "K", y = "BSS/TSS", title = "BSS/TSS Across K-Clusters") + 
   scale_x_continuous(breaks=seq(1, MAX_K, 1)) + 
   theme_minimal() +  
@@ -126,32 +129,38 @@ ggplot(data = ratio.k, aes(x=k, y=RATIO)) +
 ggplot(data = ratio.k.diff1, aes(x=k, y=RATIO)) + 
   geom_point(color="#56B4E9") + 
   geom_line(color="#999999") + 
-  geom_point(aes(x = 7, y = RATIO[7]), shape = 1, size = 5, alpha = .7, color = "#E69F00") +
+  geom_point(aes(x = 8, y = RATIO[8]), shape = 1, size = 5, alpha = .7, color = "#E69F00") +
   labs(x = "K", y = "BSS/TSS", title = "One-Unit Rolling Distance of BSS/TSS Across K-Clusters") + 
   scale_x_continuous(breaks=seq(1, MAX_K, 1)) + 
   theme_minimal() +  
   theme(panel.grid.minor.x = element_blank(), panel.grid.minor.y = element_blank())
 
 # 2-Unit Rolling Distance BSS/TSS Graph
-ggplot(data = ratio.k.diff2, aes(x=k, y=RATIO)) + 
+bss_2 <- ggplot(data = ratio.k.diff2, aes(x=k, y=RATIO)) + 
   geom_point(color="#56B4E9") + 
   geom_line(color="#999999") + 
-  geom_point(aes(x = 7, y = RATIO[7]), shape = 1, size = 5, alpha = .7, color = "#E69F00") +
+  geom_point(aes(x = 6, y = RATIO[6]), shape = 1, size = 5, alpha = .7, color = "#E69F00") +
   labs(x = "K", y = "BSS/TSS", title = "Two-Unit Rolling Distance of BSS/TSS Across K-Clusters") + 
   scale_x_continuous(breaks=seq(1, MAX_K, 1)) + 
   theme_minimal() +  
   theme(panel.grid.minor.x = element_blank(), panel.grid.minor.y = element_blank())
 
 
-######## CLUSTERING DATA WITH K=7 CLUSTERS ######## 
+######## CLUSTERING DATA WITH K=6 CLUSTERS ######## 
 
-# Run K-Means On K=7 Clusters 
+# Run K-Means On K=6 Clusters 
 set.seed(2002)
 K <- 6
 
+cluster_names <- c('Cluster 1', 'Cluster 2', 'Cluster 3',
+                   'Cluster 4', 'Cluster 5', 'Cluster 6',
+                   'Cluster 7', 'Cluster 8', 'Cluster 9',
+                   'Cluster 10', 'Cluster 11', 'Cluster 12')
+
+
 k.m <- kmeans(min, centers=K, nstart=100, iter.max=20)
 
-######## VISUALIZING K=7 CLUSTER CENTROIDS ######## 
+######## VISUALIZING K=6 CLUSTER CENTROIDS ######## 
 
 # Find scaled cluster centroids
 km_centers <- as.data.frame(k.m$centers) # SCALED cluster centers/means
@@ -159,9 +168,7 @@ km_centers <- as.data.frame(k.m$centers) # SCALED cluster centers/means
 ### Organize Cluster Centroids for Graphing ###
 
 # name clusters before pivoting
-km_centers$Cluster <- c('Cluster 1', 'Cluster 2', 'Cluster 3',
-                        'Cluster 4', 'Cluster 5', 'Cluster 6') 
-
+km_centers$Cluster <- cluster_names[1:6]
 # massage data
 km_centers <- km_centers %>%
   pivot_longer(!Cluster, names_to = 'feature', values_to = 'z_val') # pivot data to make plotting easier
@@ -170,8 +177,7 @@ km_centers <- km_centers %>%
 km_centers$feature <- factor(km_centers$feature, levels=c("HEIGHT","WEIGHT","FG_PCT","FG3_PCT","FT_PCT","REB","AST","TOV","PTS","STL","AGE","BLK")) 
 
 # reset the order of clusters for plotting (cluster 10 would default to come after cluster 1 and before cluster 2)
-km_centers$Cluster <- factor(km_centers$Cluster, levels=c('Cluster 1', 'Cluster 2', 'Cluster 3', 'Cluster 4',
-                                                          'Cluster 5', 'Cluster 6'))
+km_centers$Cluster <- factor(km_centers$Cluster, levels=cluster_names[1:6])
 
 # Point Graphs for feature means across K = 7 Clusters
 km_centers %>% 
@@ -194,7 +200,7 @@ ggplot(km_centers, aes(x=feature, y=z_val, color=Cluster, group = Cluster)) +
   labs(x = "Predictor", y = "Cluster Center", 
        title = "Visualizing K-Means Cluster Across Features") +
   theme_minimal() + 
-  theme(legend.position = "none", strip.text = element_text(face='bold'),
+  theme(strip.text = element_text(face='bold'),
         axis.text.x = element_text(angle=90, size=8), # alter axis text
         panel.grid.minor = element_blank())
 
@@ -202,7 +208,7 @@ ggplot(km_centers, aes(x=feature, y=z_val, color=Cluster, group = Cluster)) +
 
 
 
-######## USING PCA TO VISUALIZE K=7 CLUSTERS ######## 
+######## USING PCA TO VISUALIZE K=6 CLUSTERS ######## 
 
 # run PCA on data 
 pca <- prcomp(min, scale = FALSE) # perform Principle Component Analysis 
@@ -243,8 +249,55 @@ pc2 %>%
   ggpubr::stat_mean(aes(color = Cluster), size = 4, shape = 16)
 
 
+######## CLUSTER ANALYSIS ######## 
+
+
+min_clusters <- minnesota
+min_clusters$initial_cluster <- as.factor(k.m$cluster)
+
+min_clusters$EFF <- (min_clusters$PTS + 
+                       min_clusters$REB + 
+                       min_clusters$AST +
+                       min_clusters$STL + 
+                       min_clusters$BLK - 
+                       (min_clusters$FGA - min_clusters$FG_PCT) -
+                       (min_clusters$FTA - min_clusters$FT_PCT) - 
+                       min_clusters$TOV) / min_clusters$GP
+
+min_clusters %>%
+  group_by(initial_cluster) %>%
+  dplyr::summarise(size = n(),
+                   OFF_RNK = round(mean(OFF_RATING),3),
+                   DEF_RNK = round(mean(DEF_RATING),3),
+                   USG = round(mean(USG_PCT),5) * 100, 
+                   EFF = round(mean(EFF),3),
+                   HEIGHT = mean(HEIGHT),
+                   WEIGHT = mean(WEIGHT),
+                   FG_PCT = mean(FG_PCT),
+                   FG3_PCT = mean(FG3_PCT),
+                   FT_PCT = mean(FT_PCT),
+                   REB = mean(REB),
+                   AST = mean(AST),
+                   TOV = mean(TOV),
+                   PTS = mean(PTS),
+                   STL = mean(STL),
+                   AGE = mean(AGE),
+                   BLK = mean(BLK)) %>%
+  view()
 
 
 
 
+
+min_clusters_total <- min_clusters %>%
+  dplyr::select(PLAYER_ID, PLAYER_NAME, SEASON_ID, initial_cluster)
+
+min_clusters_total %>%
+  left_join(min_offensive_clusters, by = c("PLAYER_ID", "SEASON_ID", "PLAYER_NAME")) %>%
+  dplyr::select(PLAYER_ID, PLAYER_NAME, SEASON_ID, initial_cluster, offensive_cluster) %>%
+  left_join(min_defensive_clusters, by = c("PLAYER_ID", "SEASON_ID", "PLAYER_NAME")) %>%
+  dplyr::select(PLAYER_ID, PLAYER_NAME, SEASON_ID, initial_cluster, offensive_cluster, defensive_cluster) %>%
+  left_join(min_playmaking_clusters, by = c("PLAYER_ID", "SEASON_ID", "PLAYER_NAME")) %>%
+  dplyr::select(PLAYER_ID, PLAYER_NAME, SEASON_ID, initial_cluster, offensive_cluster, defensive_cluster, playmaking_cluster) %>%
+  write_csv(file = 'player_clusters.csv')
 
