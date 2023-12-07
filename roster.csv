@@ -1,0 +1,129 @@
+,TeamID,SEASON,LeagueID,PLAYER,NICKNAME,PLAYER_SLUG,NUM,POSITION,HEIGHT,WEIGHT,BIRTH_DATE,AGE,EXP,SCHOOL,PLAYER_ID,HOW_ACQUIRED,SEASON_ID
+0,1610612750,2022,00,Anthony Edwards,Anthony,anthony-edwards,1,G,6-4,225,"AUG 05, 2001",21.0,2,Georgia,1630162,#1 Pick in 2020 Draft,2022-23
+1,1610612750,2022,00,Jaden McDaniels,Jaden,jaden-mcdaniels,3,F,6-9,185,"SEP 29, 2000",22.0,2,Washington,1630183,Draft Rights Traded from OKC on 11/20/20,2022-23
+2,1610612750,2022,00,Jaylen Nowell,Jaylen,jaylen-nowell,4,G,6-4,201,"JUL 09, 1999",23.0,3,Washington,1629669,,2022-23
+3,1610612750,2022,00,Kyle Anderson,Kyle,kyle-anderson,5,F-G,6-9,230,"SEP 20, 1993",29.0,8,UCLA,203937,Signed on 07/07/22,2022-23
+4,1610612750,2022,00,Jordan McLaughlin,Jordan,jordan-mclaughlin,6,G,6-0,185,"APR 09, 1996",27.0,3,Southern California,1629162,Signed on 07/19/19,2022-23
+5,1610612750,2022,00,Wendell Moore Jr.,Wendell,wendell-moore-jr,7,G,6-5,215,"SEP 18, 2001",21.0,R,Duke,1631111,Draft Rights Traded from HOU on 06/24/22,2022-23
+6,1610612750,2022,00,Josh Minott,Josh,josh-minott,8,F,6-8,205,"NOV 25, 2002",20.0,R,Memphis,1631169,Draft Rights Traded from CHA on 06/24/22,2022-23
+7,1610612750,2022,00,Nickeil Alexander-Walker,Nickeil,nickeil-alexander-walker,9,G,6-5,205,"SEP 02, 1998",24.0,3,Virginia Tech,1629638,Traded from UTA on 02/09/23,2022-23
+8,1610612750,2022,00,Mike Conley,Mike,mike-conley,10,G,6-1,175,"OCT 11, 1987",35.0,15,Ohio State,201144,Traded from UTA on 02/09/23,2022-23
+9,1610612750,2022,00,Naz Reid,Naz,naz-reid,11,C-F,6-9,264,"AUG 26, 1999",23.0,3,Louisiana State,1629675,Signed on 07/04/19,2022-23
+10,1610612750,2022,00,Taurean Prince,Taurean,taurean-prince,12,F,6-6,218,"MAR 22, 1994",29.0,6,Baylor,1627752,,2022-23
+11,1610612750,2022,00,Nathan Knight,Nathan,nathan-knight,13,F-C,6-8,253,"SEP 20, 1997",25.0,2,William & Mary,1630233,,2022-23
+12,1610612750,2022,00,Austin Rivers,Austin,austin-rivers,25,G,6-4,200,"AUG 01, 1992",30.0,10,Duke,203085,,2022-23
+13,1610612750,2022,00,Rudy Gobert,Rudy,rudy-gobert,27,C,7-1,258,"JUN 26, 1992",31.0,9,Cholet,203497,Traded from UTA on 07/06/22,2022-23
+14,1610612750,2022,00,Karl-Anthony Towns,Karl-Anthony,karl-anthony-towns,32,C-F,7-0,248,"NOV 15, 1995",27.0,7,Kentucky,1626157,#1 Pick in 2015 Draft,2022-23
+15,1610612750,2022,00,Matt Ryan,Matt,matt-ryan,37,F,6-6,215,"APR 17, 1997",26.0,1,Tennessee-Chattanooga,1630346,,2022-23
+16,1610612750,2022,00,Luka Garza,Luka,luka-garza,55,C,6-10,243,"DEC 27, 1998",24.0,1,Iowa,1630568,Signed on 08/22/22,2022-23
+0,1610612750,2021,00,D'Angelo Russell,D'Angelo,dangelo-russell,0,G,6-4,193,"FEB 23, 1996",26.0,6,Ohio State,1626156,,2021-22
+1,1610612750,2021,00,Anthony Edwards,Anthony,anthony-edwards,1,G,6-4,225,"AUG 05, 2001",20.0,1,Georgia,1630162,#1 Pick in 2020 Draft,2021-22
+2,1610612750,2021,00,Jaden McDaniels,Jaden,jaden-mcdaniels,3,F,6-9,185,"SEP 29, 2000",21.0,1,Washington,1630183,Draft Rights Traded from OKC on 11/20/20,2021-22
+3,1610612750,2021,00,Jaylen Nowell,Jaylen,jaylen-nowell,4,G,6-4,201,"JUL 09, 1999",22.0,2,Washington,1629669,,2021-22
+4,1610612750,2021,00,Malik Beasley,Malik,malik-beasley,5,G,6-4,187,"NOV 26, 1996",25.0,5,Florida State,1627736,,2021-22
+5,1610612750,2021,00,Jordan McLaughlin,Jordan,jordan-mclaughlin,6,G,5-11,185,"APR 09, 1996",26.0,2,Southern California,1629162,Signed on 07/19/19,2021-22
+6,1610612750,2021,00,Jarred Vanderbilt,Jarred,jarred-vanderbilt,8,F,6-9,214,"APR 03, 1999",23.0,3,Kentucky,1629020,,2021-22
+7,1610612750,2021,00,Leandro Bolmaro,Leandro,leandro-bolmaro,9,F,6-6,200,"SEP 11, 2000",21.0,R,FC Barcelona,1630195,,2021-22
+8,1610612750,2021,00,Jake Layman,Jake,jake-layman,10,F,6-8,209,"MAR 07, 1994",28.0,5,Maryland,1627774,,2021-22
+9,1610612750,2021,00,Naz Reid,Naz,naz-reid,11,C-F,6-9,264,"AUG 26, 1999",22.0,2,Louisiana State,1629675,Signed on 07/04/19,2021-22
+10,1610612750,2021,00,Taurean Prince,Taurean,taurean-prince,12,F,6-6,218,"MAR 22, 1994",28.0,5,Baylor,1627752,,2021-22
+11,1610612750,2021,00,Nathan Knight,Nathan,nathan-knight,13,F-C,6-10,253,"SEP 20, 1997",24.0,1,William & Mary,1630233,,2021-22
+12,1610612750,2021,00,Greg Monroe,Greg,greg-monroe,15,F-C,6-10,250,"JUN 04, 1990",32.0,9,Georgetown,202328,,2021-22
+13,1610612750,2021,00,Josh Okogie,Josh,josh-okogie,20,G,6-4,213,"SEP 01, 1998",23.0,3,Georgia Tech,1629006,,2021-22
+14,1610612750,2021,00,Patrick Beverley,Patrick,patrick-beverley,22,G,6-1,180,"JUL 12, 1988",33.0,9,Arkansas,201976,,2021-22
+15,1610612750,2021,00,McKinley Wright IV,McKinley,mckinley-wright-iv,25,G,5-11,192,"OCT 25, 1998",23.0,R,Colorado,1630593,,2021-22
+16,1610612750,2021,00,Karl-Anthony Towns,Karl-Anthony,karl-anthony-towns,32,C-F,6-11,248,"NOV 15, 1995",26.0,6,Kentucky,1626157,#1 Pick in 2015 Draft,2021-22
+0,1610612750,2020,00,D'Angelo Russell,D'Angelo,dangelo-russell,0,G,6-4,193,"FEB 23, 1996",25.0,5,Ohio State,1626156,,2020-21
+1,1610612750,2020,00,Anthony Edwards,Anthony,anthony-edwards,1,G,6-4,225,"AUG 05, 2001",19.0,R,Georgia,1630162,#1 Pick in 2020 Draft,2020-21
+2,1610612750,2020,00,Jaden McDaniels,Jaden,jaden-mcdaniels,3,F,6-9,185,"SEP 29, 2000",20.0,R,Washington,1630183,Draft Rights Traded from OKC on 11/20/20,2020-21
+3,1610612750,2020,00,Jaylen Nowell,Jaylen,jaylen-nowell,4,G,6-4,201,"JUL 09, 1999",21.0,1,Washington,1629669,,2020-21
+4,1610612750,2020,00,Malik Beasley,Malik,malik-beasley,5,G,6-4,187,"NOV 26, 1996",24.0,4,Florida State,1627736,,2020-21
+5,1610612750,2020,00,Jordan McLaughlin,Jordan,jordan-mclaughlin,6,G,5-11,185,"APR 09, 1996",25.0,1,Southern California,1629162,Signed on 07/19/19,2020-21
+6,1610612750,2020,00,Jarred Vanderbilt,Jarred,jarred-vanderbilt,8,F,6-9,214,"APR 03, 1999",22.0,2,Kentucky,1629020,,2020-21
+7,1610612750,2020,00,Ricky Rubio,Ricky,ricky-rubio,9,G,6-3,190,"OCT 21, 1990",30.0,9,FC Barcelona,201937,,2020-21
+8,1610612750,2020,00,Jake Layman,Jake,jake-layman,10,F,6-8,209,"MAR 07, 1994",27.0,4,Maryland,1627774,,2020-21
+9,1610612750,2020,00,Naz Reid,Naz,naz-reid,11,C-F,6-9,264,"AUG 26, 1999",21.0,1,Louisiana State,1629675,Signed on 07/04/19,2020-21
+10,1610612750,2020,00,Ed Davis,Ed,ed-davis,17,C-F,6-9,218,"JUN 05, 1989",32.0,10,North Carolina,202334,,2020-21
+11,1610612750,2020,00,Josh Okogie,Josh,josh-okogie,20,G,6-4,213,"SEP 01, 1998",22.0,2,Georgia Tech,1629006,,2020-21
+12,1610612750,2020,00,Jarrett Culver,Jarrett,jarrett-culver,23,G-F,6-6,195,"FEB 20, 1999",22.0,1,Texas Tech,1629633,,2020-21
+13,1610612750,2020,00,Karl-Anthony Towns,Karl-Anthony,karl-anthony-towns,32,C-F,6-11,248,"NOV 15, 1995",25.0,5,Kentucky,1626157,#1 Pick in 2015 Draft,2020-21
+14,1610612750,2020,00,Juancho Hernangomez,Juancho,juancho-hernangomez,41,F,6-9,214,"SEP 28, 1995",25.0,4,Estudiantes,1627823,,2020-21
+0,1610612750,2019,00,D'Angelo Russell,D'Angelo,dangelo-russell,0,G,6-4,193,"FEB 23, 1996",24.0,4,Ohio State,1626156,,2019-20
+1,1610612750,2019,00,Evan Turner,Evan,evan-turner,1,G-F,6-6,220,"OCT 27, 1988",31.0,9,Ohio State,202323,,2019-20
+2,1610612750,2019,00,Jarred Vanderbilt,Jarred,jarred-vanderbilt,3,F,6-9,214,"APR 03, 1999",21.0,1,Kentucky,1629020,,2019-20
+3,1610612750,2019,00,Jaylen Nowell,Jaylen,jaylen-nowell,4,G,6-4,201,"JUL 09, 1999",20.0,R,Washington,1629669,,2019-20
+4,1610612750,2019,00,Malik Beasley,Malik,malik-beasley,5,G,6-4,187,"NOV 26, 1996",23.0,3,Florida State,1627736,,2019-20
+5,1610612750,2019,00,Jordan McLaughlin,Jordan,jordan-mclaughlin,6,G,5-11,185,"APR 09, 1996",24.0,R,Southern California,1629162,Signed on 07/19/19,2019-20
+6,1610612750,2019,00,Jake Layman,Jake,jake-layman,10,F,6-8,209,"MAR 07, 1994",26.0,3,Maryland,1627774,,2019-20
+7,1610612750,2019,00,Naz Reid,Naz,naz-reid,11,C-F,6-9,264,"AUG 26, 1999",20.0,R,Louisiana State,1629675,Signed on 07/04/19,2019-20
+8,1610612750,2019,00,Jacob Evans,Jacob,jacob-evans,12,G-F,6-4,210,"JUN 18, 1997",23.0,1,Cincinnati,1628980,,2019-20
+9,1610612750,2019,00,Omari Spellman,Omari,omari-spellman,14,F,6-8,245,"JUL 21, 1997",22.0,1,Villanova,1629016,,2019-20
+10,1610612750,2019,00,James Johnson,James,james-johnson,16,F,6-7,240,"FEB 20, 1987",33.0,10,Wake Forest,201949,,2019-20
+11,1610612750,2019,00,Josh Okogie,Josh,josh-okogie,20,G,6-4,213,"SEP 01, 1998",21.0,1,Georgia Tech,1629006,,2019-20
+12,1610612750,2019,00,Jarrett Culver,Jarrett,jarrett-culver,23,G-F,6-6,195,"FEB 20, 1999",21.0,R,Texas Tech,1629633,,2019-20
+13,1610612750,2019,00,Kelan Martin,Kelan,kelan-martin,30,F,6-5,230,"AUG 03, 1995",24.0,R,Butler,1629103,,2019-20
+14,1610612750,2019,00,Karl-Anthony Towns,Karl-Anthony,karl-anthony-towns,32,C-F,6-11,248,"NOV 15, 1995",24.0,4,Kentucky,1626157,#1 Pick in 2015 Draft,2019-20
+15,1610612750,2019,00,Juancho Hernangomez,Juancho,juancho-hernangomez,41,F,6-9,214,"SEP 28, 1995",24.0,3,Estudiantes,1627823,,2019-20
+0,1610612750,2018,00,Jeff Teague,Jeff,jeff-teague,0,G,6-2,195,"JUN 10, 1988",31.0,9,Wake Forest,201952,,2018-19
+1,1610612750,2018,00,Tyus Jones,Tyus,tyus-jones,1,G,6-2,196,"MAY 10, 1996",23.0,3,Duke,1626145,,2018-19
+2,1610612750,2018,00,Jared Terrell,Jared,jared-terrell,3,G,6-3,227,"FEB 10, 1995",24.0,R,Rhode Island,1629123,,2018-19
+3,1610612750,2018,00,Gorgui Dieng,Gorgui,gorgui-dieng,5,C,6-11,252,"JAN 18, 1990",29.0,5,Louisville,203476,,2018-19
+4,1610612750,2018,00,Jerryd Bayless,Jerryd,jerryd-bayless,8,G,6-3,200,"AUG 20, 1988",30.0,10,Arizona,201573,,2018-19
+5,1610612750,2018,00,Luol Deng,Luol,luol-deng,9,F,6-9,237,"APR 16, 1985",34.0,14,Duke,2736,,2018-19
+6,1610612750,2018,00,C.J. Williams,C.J.,cj-williams,12,G,6-5,226,"FEB 06, 1990",29.0,1,North Carolina State,203710,,2018-19
+7,1610612750,2018,00,Cam Reynolds,Cam,cam-reynolds,13,G,6-8,225,"FEB 07, 1995",24.0,R,Tulane,1629244,,2018-19
+8,1610612750,2018,00,Josh Okogie,Josh,josh-okogie,20,G,6-4,212,"SEP 01, 1998",20.0,R,Georgia Tech,1629006,,2018-19
+9,1610612750,2018,00,Andrew Wiggins,Andrew,andrew-wiggins,22,F-G,6-8,194,"FEB 23, 1995",24.0,4,Kansas,203952,,2018-19
+10,1610612750,2018,00,Derrick Rose,Derrick,derrick-rose,25,G,6-3,200,"OCT 04, 1988",30.0,9,Memphis,201565,,2018-19
+11,1610612750,2018,00,Keita Bates-Diop,Keita,keita-bates-diop,31,F,6-9,229,"JAN 23, 1996",23.0,R,Ohio State,1628966,,2018-19
+12,1610612750,2018,00,Karl-Anthony Towns,Karl-Anthony,karl-anthony-towns,32,C,7-0,248,"NOV 15, 1995",23.0,3,Kentucky,1626157,#1 Pick in 2015 Draft,2018-19
+13,1610612750,2018,00,Robert Covington,Robert,robert-covington,33,F,6-9,225,"DEC 14, 1990",28.0,5,Tennessee State,203496,,2018-19
+14,1610612750,2018,00,Dario Saric,Dario,dario-saric,36,F,6-10,223,"APR 08, 1994",25.0,2,Anadolu Efes,203967,,2018-19
+15,1610612750,2018,00,Anthony Tolliver,Anthony,anthony-tolliver,43,F,6-8,250,"JUN 01, 1985",34.0,10,Creighton,201229,,2018-19
+16,1610612750,2018,00,Mitchell Creek,Mitchell,mitchell-creek,55,F-G,6-6,225,"APR 27, 1992",27.0,R,Gottingen,1628249,,2018-19
+17,1610612750,2018,00,Taj Gibson,Taj,taj-gibson,67,F,6-9,232,"JUN 24, 1985",34.0,9,Southern California,201959,,2018-19
+0,1610612750,2017,00,Jeff Teague,Jeff,jeff-teague,0,G,6-2,189,"JUN 10, 1988",30.0,8,Wake Forest,201952,,2017-18
+1,1610612750,2017,00,Tyus Jones,Tyus,tyus-jones,1,G,6-2,184,"MAY 10, 1996",22.0,2,Duke,1626145,,2017-18
+2,1610612750,2017,00,Anthony Brown,Anthony,anthony-brown,3,F-G,6-7,224,"OCT 10, 1992",25.0,2,Stanford,1626148,,2017-18
+3,1610612750,2017,00,Gorgui Dieng,Gorgui,gorgui-dieng,5,C,6-11,251,"JAN 18, 1990",28.0,4,Louisville,203476,,2017-18
+4,1610612750,2017,00,Nemanja Bjelica,Nemanja,nemanja-bjelica,8,F,6-10,230,"MAY 09, 1988",30.0,2,Fenerbahce,202357,,2017-18
+5,1610612750,2017,00,Amile Jefferson,Amile,amile-jefferson,10,F,6-9,224,"MAY 07, 1993",25.0,R,Duke,1628518,,2017-18
+6,1610612750,2017,00,Jamal Crawford,Jamal,jamal-crawford,11,G,6-5,185,"MAR 20, 1980",38.0,17,Michigan,2037,,2017-18
+7,1610612750,2017,00,Marcus Georges-Hunt,Marcus,marcus-georges-hunt,13,G,6-5,226,"MAR 28, 1994",24.0,1,Georgia Tech,1627875,,2017-18
+8,1610612750,2017,00,Andrew Wiggins,Andrew,andrew-wiggins,22,F,6-8,202,"FEB 23, 1995",23.0,3,Kansas,203952,,2017-18
+9,1610612750,2017,00,Jimmy Butler,Jimmy,jimmy-butler,23,G,6-8,236,"SEP 14, 1989",28.0,6,Marquette,202710,,2017-18
+10,1610612750,2017,00,Justin Patton,Justin,justin-patton,24,C,7-0,236,"JUN 14, 1997",21.0,R,Creighton,1628383,,2017-18
+11,1610612750,2017,00,Derrick Rose,Derrick,derrick-rose,25,G,6-3,190,"OCT 04, 1988",29.0,8,Memphis,201565,,2017-18
+12,1610612750,2017,00,Aaron Brooks,Aaron,aaron-brooks,30,G,6-0,161,"JAN 14, 1985",33.0,9,Oregon,201166,,2017-18
+13,1610612750,2017,00,Karl-Anthony Towns,Karl-Anthony,karl-anthony-towns,32,C,7-0,248,"NOV 15, 1995",22.0,2,Kentucky,1626157,#1 Pick in 2015 Draft,2017-18
+14,1610612750,2017,00,Cole Aldrich,Cole,cole-aldrich,45,C,6-11,253,"OCT 31, 1988",29.0,7,Kansas,202332,,2017-18
+15,1610612750,2017,00,Taj Gibson,Taj,taj-gibson,67,F,6-9,235,"JUN 24, 1985",33.0,8,Southern California,201959,,2017-18
+0,1610612750,2016,00,Tyus Jones,Tyus,tyus-jones,1,G,6-2,195,"MAY 10, 1996",21.0,1,Duke,1626145,,2016-17
+1,1610612750,2016,00,Kris Dunn,Kris,kris-dunn,3,G,6-4,205,"MAR 18, 1994",23.0,R,Providence,1627739,,2016-17
+2,1610612750,2016,00,Brandon Rush,Brandon,brandon-rush,4,G-F,6-6,225,"JUL 07, 1985",31.0,8,Kansas,201575,,2016-17
+3,1610612750,2016,00,Gorgui Dieng,Gorgui,gorgui-dieng,5,F-C,6-11,240,"JAN 18, 1990",27.0,3,Louisville,203476,,2016-17
+4,1610612750,2016,00,Zach LaVine,Zach,zach-lavine,8,G,6-5,185,"MAR 10, 1995",22.0,2,UCLA,203897,,2016-17
+5,1610612750,2016,00,Ricky Rubio,Ricky,ricky-rubio,9,G,6-4,190,"OCT 21, 1990",26.0,5,FC Barcelona,201937,,2016-17
+6,1610612750,2016,00,Nikola Pekovic,Nikola,nikola-pekovic,14,C,6-11,307,"JAN 03, 1986",31.0,6,Panathinaikos,201593,,2016-17
+7,1610612750,2016,00,Shabazz Muhammad,Shabazz,shabazz-muhammad,15,F,6-6,223,"NOV 13, 1992",24.0,3,UCLA,203498,,2016-17
+8,1610612750,2016,00,Omri Casspi,Omri,omri-casspi,18,F,6-9,225,"JUN 22, 1988",29.0,7,Maccabi Tel Aviv,201956,,2016-17
+9,1610612750,2016,00,Andrew Wiggins,Andrew,andrew-wiggins,22,F,6-8,199,"FEB 23, 1995",22.0,2,Kansas,203952,,2016-17
+10,1610612750,2016,00,Jordan Hill,Jordan,jordan-hill,27,F-C,6-10,240,"JUL 27, 1987",29.0,7,Arizona,201941,,2016-17
+11,1610612750,2016,00,Karl-Anthony Towns,Karl-Anthony,karl-anthony-towns,32,C,7-0,244,"NOV 15, 1995",21.0,1,Kentucky,1626157,#1 Pick in 2015 Draft,2016-17
+12,1610612750,2016,00,Adreian Payne,Adreian,adreian-payne,33,F,6-10,237,"FEB 19, 1991",26.0,2,Michigan State,203940,,2016-17
+13,1610612750,2016,00,Cole Aldrich,Cole,cole-aldrich,45,C,6-11,250,"OCT 31, 1988",28.0,6,Kansas,202332,,2016-17
+14,1610612750,2016,00,Nemanja Bjelica,Nemanja,nemanja-bjelica,88,F,6-10,225,"MAY 09, 1988",29.0,1,Fenerbahce,202357,,2016-17
+0,1610612750,2015,00,Tyus Jones,Tyus,tyus-jones,1,G,6-2,195,"MAY 10, 1996",20.0,R,Duke,1626145,,2015-16
+1,1610612750,2015,00,Greg Smith,Greg,greg-smith,4,C,6-10,250,"JAN 08, 1991",25.0,4,Fresno State,202962,,2015-16
+2,1610612750,2015,00,Gorgui Dieng,Gorgui,gorgui-dieng,5,C-F,6-11,241,"JAN 18, 1990",26.0,2,Louisville,203476,,2015-16
+3,1610612750,2015,00,Zach LaVine,Zach,zach-lavine,8,G,6-5,189,"MAR 10, 1995",21.0,1,UCLA,203897,,2015-16
+4,1610612750,2015,00,Ricky Rubio,Ricky,ricky-rubio,9,G,6-4,194,"OCT 21, 1990",25.0,4,FC Barcelona,201937,,2015-16
+5,1610612750,2015,00,Damjan Rudez,Damjan,damjan-rudez,10,F,6-9,230,"JUN 17, 1986",30.0,1,Zaragoza,204014,,2015-16
+6,1610612750,2015,00,Tayshaun Prince,Tayshaun,tayshaun-prince,12,F,6-9,212,"FEB 28, 1980",36.0,13,Kentucky,2419,,2015-16
+7,1610612750,2015,00,Nikola Pekovic,Nikola,nikola-pekovic,14,C,6-11,307,"JAN 03, 1986",30.0,5,Panathinaikos,201593,,2015-16
+8,1610612750,2015,00,Shabazz Muhammad,Shabazz,shabazz-muhammad,15,F,6-6,223,"NOV 13, 1992",23.0,2,UCLA,203498,,2015-16
+9,1610612750,2015,00,Kevin Garnett,Kevin,kevin-garnett,21,F,6-11,240,"MAY 19, 1976",40.0,20,Farragut Academy HS (IL),708,,2015-16
+10,1610612750,2015,00,Andrew Wiggins,Andrew,andrew-wiggins,22,G-F,6-8,199,"FEB 23, 1995",21.0,1,Kansas,203952,,2015-16
+11,1610612750,2015,00,Karl-Anthony Towns,Karl-Anthony,karl-anthony-towns,32,C-F,7-0,244,"NOV 15, 1995",20.0,R,Kentucky,1626157,#1 Pick in 2015 Draft,2015-16
+12,1610612750,2015,00,Adreian Payne,Adreian,adreian-payne,33,F,6-10,237,"FEB 19, 1991",25.0,1,Michigan State,203940,,2015-16
+13,1610612750,2015,00,Nemanja Bjelica,Nemanja,nemanja-bjelica,88,F,6-10,240,"MAY 09, 1988",28.0,R,Fenerbahce,202357,,2015-16
